@@ -104,10 +104,12 @@ module FunHtml
 
     def write(name, value)
       @__buffer[name] = "#{name}#{ERB::Escape.html_escape(value)}\""
+      self
     end
 
     def write_empty(name, print)
       @__buffer[name] = print ? name : ''
+      self
     end
   end
 end
