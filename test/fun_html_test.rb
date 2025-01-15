@@ -27,7 +27,11 @@ class FunHtmlTest < Minitest::Test
 
   class Y < FunHtml::Template
     def call(item)
-      div(attr { id('ok') }) { text item.name }
+      o = item.name
+      div(attr do
+        id(o)
+        disabled(true)
+      end) { text item.name }
       include(Z.new.call)
     end
   end
@@ -56,7 +60,7 @@ class FunHtmlTest < Minitest::Test
 
   specify 'include can take a template' do
     result = Y.new.call(Item.new('Joe'))
-    assert_equal result.render, '<div id="ok">Joe</div><h1>Z</h1>'
+    assert_equal result.render, '<div id="Joe" disabled>Joe</div><h1>Z</h1>'
   end
 
   specify 'renders HTML and attributes' do
