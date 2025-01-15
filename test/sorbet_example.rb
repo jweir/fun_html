@@ -6,9 +6,9 @@ a = FunHtml::Attribute.new
 
 a.disabled true
 
-b = FunHtml::Attribute.new do
-  id('big')
-  klass('a "b" c')
+FunHtml::Attribute.new do |b|
+  b.id('big')
+  b.klass('a "b" c')
 end
 
 @template = FunHtml::Template.new
@@ -34,18 +34,22 @@ class Template < FunHtml::Template
 
   sig { params(items: T::Array[Item]).returns(Template) }
   def call(items)
+    FunHtml::Attribute.new do |a|
+      a.lang('en')
+    end
+
     doctype
-    html(attr do
-           lang('en')
-           max('en')
+    html(attr do |a|
+           a.lang('en')
+           a.max('en')
          end) do
       head do
         title { text 'Fun HTML' }
       end
       body do
-        h1(attr { id('one') }) { text 'Title' }
+        h1(attr { _1.id('one') }) { text 'Title' }
         items.each do |item|
-          div { a(attr { href(item.url) }) { text item.name } }
+          div { a(attr { _1.href(item.url) }) { text item.name } }
         end
       end
     end

@@ -78,7 +78,9 @@ module FunHtml
     # create a new Attribute object to create reuseable attributes
     def initialize(buffer = {}, &block)
       @__buffer = buffer
-      instance_eval(&block) if block
+      return unless block
+
+      yield self
     end
 
     # merge two attribute sets together

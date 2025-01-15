@@ -7,29 +7,29 @@ class Layout < FunHtml::Template
   A = FunHtml::Attribute
 
   def call
-    title(attr { title('Example') })
-    meta(attr do
-      name('viewport')
-      content('width=device-width,initial-scale=1')
+    title(attr { _1.title('Example') })
+    meta(attr do |a|
+      a.name('viewport')
+      a.content('width=device-width,initial-scale=1')
     end)
-    link(attr do
-      href('/assets/tailwind.css')
-      rel('stylesheet')
+    link(attr do |a|
+      a.href('/assets/tailwind.css')
+      a.rel('stylesheet')
     end)
-    body(attr { klass('bg-zinc-100') }) do
+    body(attr { _1.klass('bg-zinc-100') }) do
       nav(
-        attr do
-          klass('p-5')
-          id('main_nav')
+        attr do |a|
+          a.klass('p-5')
+          a.id('main_nav')
         end
       ) do
         attr = A.new
         attr.klass 'p-5'
 
         ul do
-          li(attr) { a(attr { href('/') }) { text('Home') } }
-          li(attr) { a(attr { href('/about') }) { text('About') } }
-          li(attr) { a(attr { href('/contact') }) { text('Concat') } }
+          li(attr) { a(attr { _1.href('/') }) { text('Home') } }
+          li(attr) { a(attr { _1.href('/about') }) { text('About') } }
+          li(attr) { a(attr { _1.href('/contact') }) { text('Concat') } }
         end
       end
 
@@ -39,7 +39,7 @@ class Layout < FunHtml::Template
       attr.id('test1')
       attr.id('a')
 
-      table(A.new { id('test') }) do
+      table(A.new { _1.id('test') }) do
         tr do
           td(attr) { span { text('Hi') } }
           td(attr) { span { text('Hi') } }

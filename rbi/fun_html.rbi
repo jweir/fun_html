@@ -11,7 +11,9 @@ module FunHtml
     sig { params(value: String).returns(T.self_type) }
     def text(value); end
 
-    sig { params(blk: T.proc.bind(FunHtml::Attribute).void).returns(FunHtml::Attribute) }
+    sig do
+      params(blk: T.proc.params(arg0: FunHtml::Attribute).void).returns(FunHtml::Attribute)
+    end
     def attr(&blk); end
     def comments(&elements); end
 
@@ -31,8 +33,10 @@ module FunHtml
     def merge(other); end
 
     include FunHtml::AttributeDefinitions
-
-    sig { params(buffer: T::Hash[T.untyped, T.untyped], block: T.nilable(T.proc.bind(FunHtml::Attribute).void)).void }
+    sig do
+      params(buffer: T::Hash[T.untyped, T.untyped],
+             block: T.nilable(T.proc.params(arg0: FunHtml::Attribute).void)).void
+    end
     def initialize(buffer = {}, &block); end
   end
 end

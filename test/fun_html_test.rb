@@ -13,10 +13,10 @@ class FunHtmlTest < Minitest::Test
 
   class X < FunHtml::Template
     def call(item)
-      h1(A.new do
-           id('big')
-           klass('a "b" c')
-         end) do
+      h1(A.new do |a|
+        a.id('big')
+        a.klass('a "b" c')
+      end) do
         text(item.name)
         br
         b { text('Hello & good "byte"') }
@@ -27,9 +27,9 @@ class FunHtmlTest < Minitest::Test
   class Y < FunHtml::Template
     def call(item)
       o = item.name
-      div(attr do
-        id(o)
-        disabled(true)
+      div(attr do |a|
+        a.id(o)
+        a.disabled(true)
       end) { text item.name }
     end
   end
@@ -96,7 +96,7 @@ class FunHtmlTest < Minitest::Test
   specify 'does not require a block' do
     assert_equal \
       '<title title="Ok"/>',
-      FunHtml::Template.new.title(A.new { title 'Ok' }).render
+      FunHtml::Template.new.title(A.new { |a| a.title 'Ok' }).render
   end
 
   specify 'text is html escaped' do
@@ -105,21 +105,20 @@ class FunHtmlTest < Minitest::Test
   end
 
   specify 'the data attibutes requires the name portion' do
-    assert_equal(' data-abc-def="ok"', FunHtml::Attribute.new { data('abc-def', 'ok') }.safe_attribute)
+    assert_equal(' data-abc-def="ok"', FunHtml::Attribute.new { |a| a.data('abc-def', 'ok') }.safe_attribute)
 
     assert_raises do
-      FunHtml::Attribute.new { data('abc:def', 'ok') }.safe_attribute
+      FunHtml::Attribute.new { |a| a.data('abc:def', 'ok') }.safe_attribute
     end
   end
 
-  # Attributes
   specify 'attributes are supported' do
-    a = FunHtml::Attribute.new do
-      klass('ok')
-      id('1')
+    a = FunHtml::Attribute.new do |a|
+      a.klass('ok')
+      a.id('1')
     end
 
-    b = FunHtml::Attribute.new { name('foo') }
+    b = FunHtml::Attribute.new { |a| a.name('foo') }
 
     c = a.merge(b)
 
@@ -129,19 +128,19 @@ class FunHtmlTest < Minitest::Test
   end
 
   specify 'attributes do not allow attributes to defined more than once' do
-    a = FunHtml::Attribute.new do
-      id('one')
-      name('ok')
-      id('"two"')
+    a = FunHtml::Attribute.new do |a|
+      a.id('one')
+      a.name('ok')
+      a.id('"two"')
     end
-    c = a.merge(FunHtml::Attribute.new { id('three') })
+    c = a.merge(FunHtml::Attribute.new { |a| a.id('three') })
     assert_equal ' id="&quot;two&quot;" name="ok"', a.safe_attribute
     assert_equal ' id="three" name="ok"', c.safe_attribute
   end
 
   specify 'support valueless attributes' do
-    a = FunHtml::Attribute.new { disabled(true) }
-    b = a.merge(FunHtml::Attribute.new { disabled(false) })
+    a = FunHtml::Attribute.new { |a| a.disabled(true) }
+    b = a.merge(FunHtml::Attribute.new { |a| a.disabled(false) })
     assert_equal ' disabled', a.safe_attribute
     assert_equal '', b.safe_attribute
   end
@@ -160,11 +159,11 @@ class FunHtmlTest < Minitest::Test
     # Create a number of threads and generate HTML in each one
     threads = 5.times.map do |n|
       Thread.new do
-        outputs << FunHtml::Attribute.new do
+        outputs << FunHtml::Attribute.new do |a|
           sleep 0.01 if [1].include?(n)
-          id n.to_s
-          klass n.to_s
-          rel n.to_s
+          a.id n.to_s
+          a.klass n.to_s
+          a.rel n.to_s
         end
       end
     end
@@ -201,7 +200,7 @@ class FunHtmlTemplateTest < Minitest::Test
     r = FunHtml::Template.new.html do
       br
       hr
-      img(A.new { href '/image' })
+      img(A.new { |a| a.href '/image' })
     end
 
     assert_equal '<html><br/><hr/><img href="/image"/></html>', r.render
@@ -222,17 +221,17 @@ class FunHtmlTemplateTest < Minitest::Test
   end
 
   def test_attribute_sanitization
-    @template.a(A.new { href "javascript:alert('XSS')" }) { text 'Click me' }
+    @template.a(A.new { |a| a.href "javascript:alert('XSS')" }) { text 'Click me' }
     assert_match(/href="javascript:alert\(&#39;XSS&#39;\)"/, @template.render)
   end
 
   def test_attribute_quoting
-    @template.p(A.new { klass 'class"with"quotes' }) { text 'Test' }
+    @template.p(A.new { |a| a.klass 'class"with"quotes' }) { text 'Test' }
     assert_match(/class="class&quot;with&quot;quotes"/, @template.render)
   end
 
   def test_self_closing_tags
-    @template.img(A.new { src('image.png') && alt('An image') })
+    @template.img(A.new { |a| a.src('image.png') && a.alt('An image') })
     assert_match(%r{<img src="image.png" alt="An image"/>}, @template.render)
   end
 
@@ -254,14 +253,14 @@ class FunHtmlTemplateTest < Minitest::Test
   end
 
   def test_attribute_method_aliasing
-    @template.p(A.new { klass 'my-class' }) { text 'Test' }
+    @template.p(A.new { |a| a.klass 'my-class' }) { text 'Test' }
     assert_match(/class="my-class"/, @template.render)
   end
 
   def test_html_structure
     @template.html do
       body do
-        div(A.new { id 'main' }) do
+        div(A.new { |a| a.id 'main' }) do
           p { text 'Nested content' }
         end
       end
