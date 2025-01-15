@@ -9,16 +9,6 @@ require 'erb/escape'
 module FunHtml
   # nodoc
   module Writer
-    def include(func)
-      begin
-        @__buffer << func.render
-      # it is faster to error and try than to detect the type and branch
-      rescue StandardError
-        instance_exec(&func)
-      end
-      self
-    end
-
     def text(value)
       (@__buffer ||= +'') << ERB::Escape.html_escape(value)
       self

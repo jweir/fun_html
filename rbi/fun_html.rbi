@@ -8,8 +8,6 @@ module FunHtml
   end
 
   module Writer
-    def include(func); end
-
     sig { params(value: String).returns(T.self_type) }
     def text(value); end
 

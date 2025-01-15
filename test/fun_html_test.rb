@@ -12,7 +12,7 @@ class FunHtmlTest < Minitest::Test
   A = FunHtml::Attribute
 
   class X < FunHtml::Template
-    def call(item, content: nil)
+    def call(item)
       h1(A.new do
            id('big')
            klass('a "b" c')
@@ -20,7 +20,6 @@ class FunHtmlTest < Minitest::Test
         text(item.name)
         br
         b { text('Hello & good "byte"') }
-        include(content) if content
       end
     end
   end
@@ -32,7 +31,6 @@ class FunHtmlTest < Minitest::Test
         id(o)
         disabled(true)
       end) { text item.name }
-      include(Z.new.call)
     end
   end
 
@@ -56,11 +54,6 @@ class FunHtmlTest < Minitest::Test
     template = FunHtml::Template.new
     template.doctype
     assert_equal '<!DOCTYPE html>', template.render
-  end
-
-  specify 'include can take a template' do
-    result = Y.new.call(Item.new('Joe'))
-    assert_equal result.render, '<div id="Joe" disabled>Joe</div><h1>Z</h1>'
   end
 
   specify 'renders HTML and attributes' do
@@ -104,12 +97,6 @@ class FunHtmlTest < Minitest::Test
     assert_equal \
       '<title title="Ok"/>',
       FunHtml::Template.new.title(A.new { title 'Ok' }).render
-  end
-
-  specify 'processes lambdas as a block' do
-    assert_equal \
-      '<h1 id="big" class="a &quot;b&quot; c">ITEM<br/><b>Hello &amp; good &quot;byte&quot;</b><b>ok</b></h1>',
-      X.new.call(Item.new('ITEM'), content: -> { b { text 'ok' } }).render
   end
 
   specify 'text is html escaped' do
