@@ -45,10 +45,12 @@ class FunHtmlTest < Minitest::Test
     end
   end
 
-  # TODO: only support strings in comments
-  specify 'comments supported' do
-    assert_equal '<p><!--no comment--></p>', FunHtml::Template.new.p { comment { text 'no comment' } }.render
+  specify 'escaped comments supported' do
+    assert_equal '<p><!--no comment--></p>', FunHtml::Template.new.p { comment 'no comment' }.render
     assert_equal '<p><!----></p>', FunHtml::Template.new.p { comment }.render, 'empty comment'
+    assert_equal '<p><!--&lt;b&gt;html&lt;/b&gt;--></p>', FunHtml::Template.new.p {
+      comment '<b>html</b>'
+    }.render, 'escaped comment'
   end
 
   specify 'doctype supported' do
@@ -113,11 +115,6 @@ class FunHtmlTest < Minitest::Test
   specify 'text is html escaped' do
     t = FunHtml::Template.new
     assert_equal '&lt;script&gt;x&lt;/script&gt;', t.text('<script>x</script>').render
-  end
-
-  specify 'unsafe_text is not html escaped' do
-    t = FunHtml::Template.new
-    assert_equal "<script>'x'</script>", t.unsafe_text("<script>'x'</script>").render
   end
 
   specify 'the data attibutes requires the name portion' do
@@ -197,6 +194,12 @@ class FunHtmlTest < Minitest::Test
 
     assert_equal expected.strip, outputs.map(&:safe_attribute).sort.map(&:strip).join("\n").strip
   end
+
+  specify 'script tag does not escape contents' do
+    @template = FunHtml::Template.new
+    @template.script { "console.log('Hello, World!');" }
+    assert_equal "<script>console.log('Hello, World!');</script>", @template.render
+  end
 end
 
 # set of OpenAI generated tests
@@ -254,11 +257,6 @@ class FunHtmlTemplateTest < Minitest::Test
   def test_invalid_html_escaping
     @template.text('<html><body>Invalid HTML</body></html>')
     assert_equal '&lt;html&gt;&lt;body&gt;Invalid HTML&lt;/body&gt;&lt;/html&gt;', @template.render
-  end
-
-  def test_script_tag_escaping
-    @template.script { text "console.log('Hello, World!');" }
-    assert_equal '<script>console.log(&#39;Hello, World!&#39;);</script>', @template.render
   end
 
   def test_only_allows_attributes

@@ -45,6 +45,7 @@ class Template < FunHtml::Template
          end) do
       head do
         title { text 'Fun HTML' }
+        script(attr { |a| a.id 'test_script' }) { 'hello' }
       end
       body do
         h1(attr { _1.id('one') }) { text 'Title' }

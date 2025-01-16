@@ -14,23 +14,22 @@ module FunHtml
       self
     end
 
-    # TODO: this might be too much, and should make be scoped only to a script tag
-    def unsafe_text(value)
-      (@__buffer ||= +'') << value
-      self
-    end
-
     def attr(&blk) # rubocop:disable Style/ArgumentsForwarding
       Attribute.new(&blk) # rubocop:disable Style/ArgumentsForwarding
     end
 
-    def comment(&elements)
-      write('<!--', '-->', nil, closing_char: '', closing_void_char: '-->', &elements)
+    def comment(comment_text = nil)
+      write('<!--', '-->', nil, closing_char: '', closing_void_char: '-->') { text comment_text }
     end
 
     def doctype
       (@__buffer ||= +'') << '<!DOCTYPE html>'
       self
+    end
+
+    def script(attributes = nil, &block) # rubocop:disable Lint/UnusedMethodArgument
+      body = yield
+      write('<script', '</script>', attributes) { send :unsafe_text, body }
     end
 
     # insert the output of the given template into this template
@@ -47,6 +46,11 @@ module FunHtml
     end
 
     private
+
+    def unsafe_text(value)
+      (@__buffer ||= +'') << value
+      self
+    end
 
     CLOSE = '>'
     CLOSE_VOID = '/>'

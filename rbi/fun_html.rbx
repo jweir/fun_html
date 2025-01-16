@@ -19,14 +19,20 @@ module FunHtml
     end
     def attr(&blk); end
 
-    params(elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
-    def comments(&elements); end
+    sig { params(text: T.nilable(String)).returns(T.self_type) }
+    def comments(text); end
 
-    params(template: FunHtml::Writer).returns(T.self_type)
+    sig { params(template: FunHtml::Template).returns(T.self_type) }
     def include(template); end
 
     sig { returns(T.self_type) }
     def doctype; end
+
+    sig do
+      params(attributes: T.nilable(FunHtml::Attribute),
+             block: T.proc.params(arg0: String).void).returns(T.self_type)
+    end
+    def script(attributes, &blk); end
 
     sig { returns(String) }
     def render; end

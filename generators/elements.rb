@@ -13,8 +13,9 @@ module Generators
       grouped = JSON.parse(source)['elements'].group_by { _1['interface'] }
 
       interfaces = grouped.transform_values do |elements|
-        elements.map do |el|
+        elements.filter_map do |el|
           name = el['name']
+          next if name == 'script'
 
           if VOID.include?(name)
             void_element(name)
@@ -25,7 +26,9 @@ module Generators
       end
 
       signatures = grouped.transform_values do |elements|
-        elements.map do |el|
+        elements.filter_map do |el|
+          next if name == 'script'
+
           name = el['name']
           sig_element(name)
         end

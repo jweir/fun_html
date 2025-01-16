@@ -627,9 +627,6 @@ module FunHtml
     end
 
     module HTMLScriptElement
-      def script(attributes = nil, &elements)
-        write('<script', '</script>', attributes, &elements)
-      end
     end
 
     module HTMLTemplateElement
