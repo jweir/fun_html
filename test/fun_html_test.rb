@@ -45,6 +45,7 @@ class FunHtmlTest < Minitest::Test
     end
   end
 
+  # TODO: only support strings in comments
   specify 'comments supported' do
     assert_equal '<p><!--no comment--></p>', FunHtml::Template.new.p { comment { text 'no comment' } }.render
     assert_equal '<p><!----></p>', FunHtml::Template.new.p { comment }.render, 'empty comment'
@@ -91,6 +92,16 @@ class FunHtmlTest < Minitest::Test
     t.h1 { b { text(value) } }
     t.span { text(@value) }
     assert_equal '<h1><b>ok</b></h1><span></span>', t.render
+  end
+
+  specify 'a template can be included into another' do
+    b = FunHtml::Template.new.div { text 'B' }
+    a = FunHtml::Template.new.html do
+      div { text 'A' }
+      include(b)
+    end
+
+    assert_equal '<html><div>A</div><div>B</div></html>', a.render
   end
 
   specify 'does not require a block' do

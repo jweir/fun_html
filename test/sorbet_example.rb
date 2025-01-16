@@ -38,6 +38,7 @@ class Template < FunHtml::Template
     end
 
     doctype
+
     html(attr do |a|
            a.lang('en')
            a.max('en')

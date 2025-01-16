@@ -18,7 +18,12 @@ module FunHtml
       params(blk: T.proc.params(arg0: FunHtml::Attribute).void).returns(FunHtml::Attribute)
     end
     def attr(&blk); end
+
+    params(elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
     def comments(&elements); end
+
+    params(template: FunHtml::Writer).returns(T.self_type)
+    def include(template); end
 
     sig { returns(T.self_type) }
     def doctype; end

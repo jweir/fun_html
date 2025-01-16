@@ -33,6 +33,12 @@ module FunHtml
       self
     end
 
+    # insert the output of the given template into this template
+    def include(template)
+      @__buffer << template.render
+      self
+    end
+
     def render
       @__buffer
     ensure
