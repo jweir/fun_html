@@ -14,6 +14,12 @@ module FunHtml
       self
     end
 
+    # TODO: this might be too much, and should make be scoped only to a script tag
+    def unsafe_text(value)
+      (@__buffer ||= +'') << value
+      self
+    end
+
     def attr(&blk) # rubocop:disable Style/ArgumentsForwarding
       Attribute.new(&blk) # rubocop:disable Style/ArgumentsForwarding
     end

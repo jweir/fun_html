@@ -104,6 +104,11 @@ class FunHtmlTest < Minitest::Test
     assert_equal '&lt;script&gt;x&lt;/script&gt;', t.text('<script>x</script>').render
   end
 
+  specify 'unsafe_text is not html escaped' do
+    t = FunHtml::Template.new
+    assert_equal "<script>'x'</script>", t.unsafe_text("<script>'x'</script>").render
+  end
+
   specify 'the data attibutes requires the name portion' do
     assert_equal(' data-abc-def="ok"', FunHtml::Attribute.new { |a| a.data('abc-def', 'ok') }.safe_attribute)
 

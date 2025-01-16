@@ -11,6 +11,9 @@ module FunHtml
     sig { params(value: String).returns(T.self_type) }
     def text(value); end
 
+    sig { params(value: String).returns(T.self_type) }
+    def unsafe_text(value); end
+
     sig do
       params(blk: T.proc.params(arg0: FunHtml::Attribute).void).returns(FunHtml::Attribute)
     end
