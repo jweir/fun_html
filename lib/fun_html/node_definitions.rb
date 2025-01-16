@@ -24,21 +24,21 @@ module FunHtml
     module HTMLBaseElement
       def base(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<base', '>', attributes)
+        write_void('<base', attributes)
       end
     end
 
     module HTMLLinkElement
       def link(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<link', '>', attributes)
+        write_void('<link', attributes)
       end
     end
 
     module HTMLMetaElement
       def meta(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<meta', '>', attributes)
+        write_void('<meta', attributes)
       end
     end
 
@@ -201,7 +201,7 @@ module FunHtml
 
       def wbr(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<wbr', '>', attributes)
+        write_void('<wbr', attributes)
       end
 
       def summary(attributes = nil, &elements)
@@ -300,7 +300,7 @@ module FunHtml
     module HTMLHRElement
       def hr(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<hr', '>', attributes)
+        write_void('<hr', attributes)
       end
     end
 
@@ -391,7 +391,7 @@ module FunHtml
     module HTMLBRElement
       def br(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<br', '>', attributes)
+        write_void('<br', attributes)
       end
     end
 
@@ -414,14 +414,14 @@ module FunHtml
     module HTMLSourceElement
       def source(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<source', '>', attributes)
+        write_void('<source', attributes)
       end
     end
 
     module HTMLImageElement
       def img(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<img', '>', attributes)
+        write_void('<img', attributes)
       end
     end
 
@@ -434,7 +434,7 @@ module FunHtml
     module HTMLEmbedElement
       def embed(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<embed', '>', attributes)
+        write_void('<embed', attributes)
       end
     end
 
@@ -459,7 +459,7 @@ module FunHtml
     module HTMLTrackElement
       def track(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<track', '>', attributes)
+        write_void('<track', attributes)
       end
     end
 
@@ -472,7 +472,7 @@ module FunHtml
     module HTMLAreaElement
       def area(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<area', '>', attributes)
+        write_void('<area', attributes)
       end
     end
 
@@ -495,7 +495,7 @@ module FunHtml
 
       def col(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<col', '>', attributes)
+        write_void('<col', attributes)
       end
     end
 
@@ -544,7 +544,7 @@ module FunHtml
     module HTMLInputElement
       def input(attributes = nil)
         # no child elements allowed and no closing tag
-        write('<input', '>', attributes)
+        write_void('<input', attributes)
       end
     end
 

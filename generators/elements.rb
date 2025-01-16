@@ -68,7 +68,7 @@ module Generators
       <<~SRC
         def #{name}(attributes = nil, &elements)
           # no child elements allowed and no closing tag
-          write('<#{name}', '>', attributes)
+          write_void('<#{name}', attributes)
         end
       SRC
     end

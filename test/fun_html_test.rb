@@ -10,6 +10,7 @@ class FunHtmlTest < Minitest::Test
 
   Item = Struct.new(:name)
   A = FunHtml::Attribute
+  T = FunHtml::Template
 
   class X < FunHtml::Template
     def call(item)
@@ -51,6 +52,12 @@ class FunHtmlTest < Minitest::Test
     assert_equal '<p><!--&lt;b&gt;html&lt;/b&gt;--></p>', FunHtml::Template.new.p {
       comment '<b>html</b>'
     }.render, 'escaped comment'
+  end
+
+  specify 'empty non-void nodes close correctly' do
+    assert_equal '<div></div>', T.new.div.render
+    assert_equal '<span></span>', T.new.span.render
+    assert_equal '<form></form>', T.new.form.render
   end
 
   specify 'doctype supported' do
@@ -104,12 +111,6 @@ class FunHtmlTest < Minitest::Test
     end
 
     assert_equal '<html><div>A</div><div>B</div></html>', a.render
-  end
-
-  specify 'does not require a block' do
-    assert_equal \
-      '<title title="Ok"/>',
-      FunHtml::Template.new.title(A.new { |a| a.title 'Ok' }).render
   end
 
   specify 'text is html escaped' do

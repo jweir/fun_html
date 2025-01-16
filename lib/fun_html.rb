@@ -19,7 +19,7 @@ module FunHtml
     end
 
     def comment(comment_text = nil)
-      write('<!--', '-->', nil, closing_char: '', closing_void_char: '-->') { text comment_text }
+      write('<!--', '-->', nil, closing_char: '') { text comment_text }
     end
 
     def doctype
@@ -55,11 +55,11 @@ module FunHtml
     CLOSE = '>'
     CLOSE_VOID = '/>'
 
-    def write(open, close, attr = nil, closing_char: CLOSE, closing_void_char: CLOSE_VOID, &block)
+    def write(open, close, attr = nil, closing_char: CLOSE, &block)
       (@__buffer ||= +'') << open << Attribute.to_html(attr)
 
+      @__buffer << closing_char
       if block
-        @__buffer << closing_char
 
         begin
           yield
@@ -67,12 +67,14 @@ module FunHtml
         rescue StandardError
           instance_eval(&block)
         end
-        @__buffer << close
-      else
-        @__buffer << closing_void_char
       end
+      @__buffer << close
 
       self
+    end
+
+    def write_void(open, attr = nil)
+      (@__buffer ||= +'') << open << Attribute.to_html(attr) << CLOSE_VOID
     end
   end
 
