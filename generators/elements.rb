@@ -72,7 +72,7 @@ module Generators
 
     def self.sig_element(name)
       <<~SRC
-        sig {params(attributes: T.nilable(FunHtml::Attribute), elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type) }
+        sig {params(attributes: T.nilable(FunHtml::Attribute), elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type) }
         def #{name}(attributes = nil, &elements); end
       SRC
     end

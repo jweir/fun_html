@@ -27,7 +27,6 @@ class Template < FunHtml::Template
   extend T::Sig
 
   sig { returns(Template) }
-
   def test
     doctype
   end

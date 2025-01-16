@@ -50,7 +50,7 @@ module FunHtml
     module HTMLHtmlElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def html(attributes = nil, &elements); end
     end
@@ -58,7 +58,7 @@ module FunHtml
     module HTMLHeadElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def head(attributes = nil, &elements); end
     end
@@ -66,7 +66,7 @@ module FunHtml
     module HTMLTitleElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def title(attributes = nil, &elements); end
     end
@@ -74,7 +74,7 @@ module FunHtml
     module HTMLBaseElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def base(attributes = nil, &elements); end
     end
@@ -82,7 +82,7 @@ module FunHtml
     module HTMLLinkElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def link(attributes = nil, &elements); end
     end
@@ -90,7 +90,7 @@ module FunHtml
     module HTMLMetaElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def meta(attributes = nil, &elements); end
     end
@@ -98,7 +98,7 @@ module FunHtml
     module HTMLStyleElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def style(attributes = nil, &elements); end
     end
@@ -106,7 +106,7 @@ module FunHtml
     module HTMLBodyElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def body(attributes = nil, &elements); end
     end
@@ -114,313 +114,313 @@ module FunHtml
     module HTMLElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def article(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def section(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def nav(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def aside(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def hgroup(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def header(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def footer(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def address(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def dt(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def dd(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def figure(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def figcaption(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def main(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def search(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def em(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def strong(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def small(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def s(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def cite(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def dfn(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def abbr(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def ruby(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def rt(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def rp(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def code(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def var(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def samp(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def kbd(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def sub(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def sup(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def i(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def b(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def u(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def mark(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def bdi(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def bdo(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def wbr(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def summary(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def noscript(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def acronym(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def noframes(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def menuitem(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def noembed(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def plaintext(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def rb(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def rtc(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def strike(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def basefont(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def big(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def center(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def nobr(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def tt(attributes = nil, &elements); end
     end
@@ -428,37 +428,37 @@ module FunHtml
     module HTMLHeadingElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def h1(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def h2(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def h3(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def h4(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def h5(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def h6(attributes = nil, &elements); end
     end
@@ -466,7 +466,7 @@ module FunHtml
     module HTMLParagraphElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def p(attributes = nil, &elements); end
     end
@@ -474,7 +474,7 @@ module FunHtml
     module HTMLHRElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def hr(attributes = nil, &elements); end
     end
@@ -482,19 +482,19 @@ module FunHtml
     module HTMLPreElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def pre(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def listing(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def xmp(attributes = nil, &elements); end
     end
@@ -502,13 +502,13 @@ module FunHtml
     module HTMLQuoteElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def blockquote(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def q(attributes = nil, &elements); end
     end
@@ -516,7 +516,7 @@ module FunHtml
     module HTMLOListElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def ol(attributes = nil, &elements); end
     end
@@ -524,7 +524,7 @@ module FunHtml
     module HTMLUListElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def ul(attributes = nil, &elements); end
     end
@@ -532,7 +532,7 @@ module FunHtml
     module HTMLMenuElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def menu(attributes = nil, &elements); end
     end
@@ -540,7 +540,7 @@ module FunHtml
     module HTMLLIElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def li(attributes = nil, &elements); end
     end
@@ -548,7 +548,7 @@ module FunHtml
     module HTMLDListElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def dl(attributes = nil, &elements); end
     end
@@ -556,7 +556,7 @@ module FunHtml
     module HTMLDivElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def div(attributes = nil, &elements); end
     end
@@ -564,7 +564,7 @@ module FunHtml
     module HTMLAnchorElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def a(attributes = nil, &elements); end
     end
@@ -572,7 +572,7 @@ module FunHtml
     module HTMLDataElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def data(attributes = nil, &elements); end
     end
@@ -580,7 +580,7 @@ module FunHtml
     module HTMLTimeElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def time(attributes = nil, &elements); end
     end
@@ -588,7 +588,7 @@ module FunHtml
     module HTMLSpanElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def span(attributes = nil, &elements); end
     end
@@ -596,7 +596,7 @@ module FunHtml
     module HTMLBRElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def br(attributes = nil, &elements); end
     end
@@ -604,13 +604,13 @@ module FunHtml
     module HTMLModElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def ins(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def del(attributes = nil, &elements); end
     end
@@ -618,7 +618,7 @@ module FunHtml
     module HTMLPictureElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def picture(attributes = nil, &elements); end
     end
@@ -626,7 +626,7 @@ module FunHtml
     module HTMLSourceElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def source(attributes = nil, &elements); end
     end
@@ -634,7 +634,7 @@ module FunHtml
     module HTMLImageElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def img(attributes = nil, &elements); end
     end
@@ -642,7 +642,7 @@ module FunHtml
     module HTMLIFrameElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def iframe(attributes = nil, &elements); end
     end
@@ -650,7 +650,7 @@ module FunHtml
     module HTMLEmbedElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def embed(attributes = nil, &elements); end
     end
@@ -658,7 +658,7 @@ module FunHtml
     module HTMLObjectElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def object(attributes = nil, &elements); end
     end
@@ -666,7 +666,7 @@ module FunHtml
     module HTMLVideoElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def video(attributes = nil, &elements); end
     end
@@ -674,7 +674,7 @@ module FunHtml
     module HTMLAudioElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def audio(attributes = nil, &elements); end
     end
@@ -682,7 +682,7 @@ module FunHtml
     module HTMLTrackElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def track(attributes = nil, &elements); end
     end
@@ -690,7 +690,7 @@ module FunHtml
     module HTMLMapElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def map(attributes = nil, &elements); end
     end
@@ -698,7 +698,7 @@ module FunHtml
     module HTMLAreaElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def area(attributes = nil, &elements); end
     end
@@ -706,7 +706,7 @@ module FunHtml
     module HTMLTableElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def table(attributes = nil, &elements); end
     end
@@ -714,7 +714,7 @@ module FunHtml
     module HTMLTableCaptionElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def caption(attributes = nil, &elements); end
     end
@@ -722,13 +722,13 @@ module FunHtml
     module HTMLTableColElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def colgroup(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def col(attributes = nil, &elements); end
     end
@@ -736,19 +736,19 @@ module FunHtml
     module HTMLTableSectionElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def tbody(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def thead(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def tfoot(attributes = nil, &elements); end
     end
@@ -756,7 +756,7 @@ module FunHtml
     module HTMLTableRowElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def tr(attributes = nil, &elements); end
     end
@@ -764,13 +764,13 @@ module FunHtml
     module HTMLTableCellElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def td(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def th(attributes = nil, &elements); end
     end
@@ -778,7 +778,7 @@ module FunHtml
     module HTMLFormElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def form(attributes = nil, &elements); end
     end
@@ -786,7 +786,7 @@ module FunHtml
     module HTMLLabelElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def label(attributes = nil, &elements); end
     end
@@ -794,7 +794,7 @@ module FunHtml
     module HTMLInputElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def input(attributes = nil, &elements); end
     end
@@ -802,7 +802,7 @@ module FunHtml
     module HTMLButtonElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def button(attributes = nil, &elements); end
     end
@@ -810,7 +810,7 @@ module FunHtml
     module HTMLSelectElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def select(attributes = nil, &elements); end
     end
@@ -818,7 +818,7 @@ module FunHtml
     module HTMLDataListElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def datalist(attributes = nil, &elements); end
     end
@@ -826,7 +826,7 @@ module FunHtml
     module HTMLOptGroupElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def optgroup(attributes = nil, &elements); end
     end
@@ -834,7 +834,7 @@ module FunHtml
     module HTMLOptionElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def option(attributes = nil, &elements); end
     end
@@ -842,7 +842,7 @@ module FunHtml
     module HTMLTextAreaElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def textarea(attributes = nil, &elements); end
     end
@@ -850,7 +850,7 @@ module FunHtml
     module HTMLOutputElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def output(attributes = nil, &elements); end
     end
@@ -858,7 +858,7 @@ module FunHtml
     module HTMLProgressElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def progress(attributes = nil, &elements); end
     end
@@ -866,7 +866,7 @@ module FunHtml
     module HTMLMeterElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def meter(attributes = nil, &elements); end
     end
@@ -874,7 +874,7 @@ module FunHtml
     module HTMLFieldSetElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def fieldset(attributes = nil, &elements); end
     end
@@ -882,7 +882,7 @@ module FunHtml
     module HTMLLegendElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def legend(attributes = nil, &elements); end
     end
@@ -890,7 +890,7 @@ module FunHtml
     module HTMLDetailsElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def details(attributes = nil, &elements); end
     end
@@ -898,7 +898,7 @@ module FunHtml
     module HTMLDialogElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def dialog(attributes = nil, &elements); end
     end
@@ -906,7 +906,7 @@ module FunHtml
     module HTMLScriptElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def script(attributes = nil, &elements); end
     end
@@ -914,7 +914,7 @@ module FunHtml
     module HTMLTemplateElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def template(attributes = nil, &elements); end
     end
@@ -922,7 +922,7 @@ module FunHtml
     module HTMLSlotElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def slot(attributes = nil, &elements); end
     end
@@ -930,7 +930,7 @@ module FunHtml
     module HTMLCanvasElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def canvas(attributes = nil, &elements); end
     end
@@ -938,49 +938,49 @@ module FunHtml
     module HTMLUnknownElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def applet(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def bgsound(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def isindex(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def keygen(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def nextid(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def blink(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def multicol(attributes = nil, &elements); end
 
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def spacer(attributes = nil, &elements); end
     end
@@ -988,7 +988,7 @@ module FunHtml
     module HTMLDirectoryElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def dir(attributes = nil, &elements); end
     end
@@ -996,7 +996,7 @@ module FunHtml
     module HTMLFrameElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def frame(attributes = nil, &elements); end
     end
@@ -1004,7 +1004,7 @@ module FunHtml
     module HTMLFrameSetElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def frameset(attributes = nil, &elements); end
     end
@@ -1012,7 +1012,7 @@ module FunHtml
     module HTMLParamElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def param(attributes = nil, &elements); end
     end
@@ -1020,7 +1020,7 @@ module FunHtml
     module HTMLFontElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def font(attributes = nil, &elements); end
     end
@@ -1028,7 +1028,7 @@ module FunHtml
     module HTMLMarqueeElement
       sig do
         params(attributes: T.nilable(FunHtml::Attribute),
-               elements: T.nilable(T.proc.bind(FunHtml::Template).void)).returns(T.self_type)
+               elements: T.nilable(T.proc.bind(T.self_type).void)).returns(T.self_type)
       end
       def marquee(attributes = nil, &elements); end
     end
