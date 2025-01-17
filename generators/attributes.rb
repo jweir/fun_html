@@ -82,6 +82,11 @@ module Generators
       'rowspan' => { desc: 'Number of rows a cell spans', values: nil, type: :number },
       'sandbox' => { desc: 'Security rules for iframe',
                      values: %w[allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation], type: :enum },
+      'span' => {
+        desc: 'Specifies the number of consecutive columns the <colgroup> element spans. The value must be a positive integer greater than zero. If not present, its default value is 1.',
+        values: nil,
+        type: :number
+      },
       'scope' => { desc: 'Cells header element relates to', values: %w[col colgroup row rowgroup], type: :enum },
       'selected' => { desc: 'Option is pre-selected', values: nil, type: :boolean },
       'shape' => { desc: 'Shape of image map area', values: %w[default rect circle poly], type: :enum },

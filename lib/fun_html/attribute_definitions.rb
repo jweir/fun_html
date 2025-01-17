@@ -152,6 +152,8 @@ module FunHtml
     def rowspan(value) = write(' rowspan="', value)
     # Security rules for iframe
     def sandbox(value) = write(' sandbox="', value)
+    # Specifies the number of consecutive columns the <colgroup> element spans. The value must be a positive integer greater than zero. If not present, its default value is 1.
+    def span(value) = write(' span="', value)
     # Cells header element relates to
     def scope(value) = write(' scope="', value)
     # Option is pre-selected

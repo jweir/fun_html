@@ -143,6 +143,8 @@ module FunHtml
     def rowspan(value); end
     sig { params(value: String).void }
     def sandbox(value); end
+    sig { params(value: Numeric).void }
+    def span(value); end
     sig { params(value: String).void }
     def scope(value); end
     sig { params(value: T::Boolean).void }
