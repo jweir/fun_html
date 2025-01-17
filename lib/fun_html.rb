@@ -8,9 +8,13 @@ require 'erb/escape'
 # nodoc
 module FunHtml
   # nodoc
-  module Writer
+  class Writer
+    def initialize
+      @__buffer = +''
+    end
+
     def text(value)
-      (@__buffer ||= +'') << ERB::Escape.html_escape(value)
+      @__buffer << ERB::Escape.html_escape(value)
       self
     end
 
@@ -23,7 +27,7 @@ module FunHtml
     end
 
     def doctype
-      (@__buffer ||= +'') << '<!DOCTYPE html>'
+      @__buffer << '<!DOCTYPE html>'
       self
     end
 
@@ -48,7 +52,7 @@ module FunHtml
     private
 
     def unsafe_text(value)
-      (@__buffer ||= +'') << value
+      @__buffer << value
       self
     end
 
@@ -56,7 +60,7 @@ module FunHtml
     CLOSE_VOID = '/>'
 
     def write(open, close, attr = nil, closing_char: CLOSE, &block)
-      (@__buffer ||= +'') << open << Attribute.to_html(attr)
+      @__buffer << open << Attribute.to_html(attr)
 
       @__buffer << closing_char
       if block
@@ -74,13 +78,12 @@ module FunHtml
     end
 
     def write_void(open, attr = nil)
-      (@__buffer ||= +'') << open << Attribute.to_html(attr) << CLOSE_VOID
+      @__buffer << open << Attribute.to_html(attr) << CLOSE_VOID
     end
   end
 
   # nodoc
-  class Template
-    include FunHtml::Writer
+  class Template < FunHtml::Writer
     include FunHtml::NodeDefinitions::HTMLAllElements
   end
 
