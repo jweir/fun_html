@@ -47,10 +47,10 @@ class FunHtmlTest < Minitest::Test
   end
 
   specify 'escaped comments supported' do
-    assert_equal '<p><!--no comment--></p>', FunHtml::Template.new.p { comment 'no comment' }.render
-    assert_equal '<p><!----></p>', FunHtml::Template.new.p { comment }.render, 'empty comment'
+    assert_equal '<p><!--no comment--></p>', FunHtml::Template.new.p { _1.comment 'no comment' }.render
+    assert_equal '<p><!----></p>', FunHtml::Template.new.p { _1.comment }.render, 'empty comment'
     assert_equal '<p><!--&lt;b&gt;html&lt;/b&gt;--></p>', FunHtml::Template.new.p {
-      comment '<b>html</b>'
+      _1.comment '<b>html</b>'
     }.render, 'escaped comment'
   end
 
@@ -80,8 +80,8 @@ class FunHtmlTest < Minitest::Test
   end
 
   specify 'handles whitespace correctly' do
-    t = FunHtml::Template.new.html do
-      text(
+    template = FunHtml::Template.new.html do |t|
+      t.text(
         <<~TXT
           Hello,
 
@@ -91,23 +91,14 @@ class FunHtmlTest < Minitest::Test
       )
     end
 
-    assert_equal "<html>Hello,\n\nMy name is Joe.\nBye.\n</html>", t.render
-  end
-
-  specify 'supports appending and binding' do
-    t = FunHtml::Template.new
-    value = 'ok' # this would be bound to the block
-    @value = 'not_present' # this should not be bound
-    t.h1 { b { text(value) } }
-    t.span { text(@value) }
-    assert_equal '<h1><b>ok</b></h1><span></span>', t.render
+    assert_equal "<html>Hello,\n\nMy name is Joe.\nBye.\n</html>", template.render
   end
 
   specify 'a template can be included into another' do
-    b = FunHtml::Template.new.div { text 'B' }
-    a = FunHtml::Template.new.html do
-      div { text 'A' }
-      include(b)
+    b = FunHtml::Template.new.div { _1.text 'B' }
+    a = FunHtml::Template.new.html do |t|
+      t.div { t.text 'A' }
+      t.include(b)
     end
 
     assert_equal '<html><div>A</div><div>B</div></html>', a.render
@@ -217,23 +208,23 @@ class FunHtmlTemplateTest < Minitest::Test
   end
 
   def test_void_elements
-    r = FunHtml::Template.new.html do
-      br
-      hr
-      img(A.new { |a| a.href '/image' })
+    r = FunHtml::Template.new.html do |t|
+      t.br
+      t.hr
+      t.img(A.new { |a| a.href '/image' })
     end
 
     assert_equal '<html><br/><hr/><img href="/image"/></html>', r.render
   end
 
   def test_html_node_creation
-    @template.html do
-      head do
-        title { text 'My Page Title' }
+    @template.html do |t|
+      t.head do
+        t.title { t.text 'My Page Title' }
       end
-      body do
-        h1 { text 'Heading' }
-        p { text 'This is a paragraph.' }
+      t.body do
+        t.h1 { t.text 'Heading' }
+        t.p { t.text 'This is a paragraph.' }
       end
     end
     expected_output = '<html><head><title>My Page Title</title></head><body><h1>Heading</h1><p>This is a paragraph.</p></body></html>'
@@ -241,12 +232,12 @@ class FunHtmlTemplateTest < Minitest::Test
   end
 
   def test_attribute_sanitization
-    @template.a(A.new { |a| a.href "javascript:alert('XSS')" }) { text 'Click me' }
+    @template.a(A.new { |a| a.href "javascript:alert('XSS')" }) { _1.text 'Click me' }
     assert_match(/href="javascript:alert\(&#39;XSS&#39;\)"/, @template.render)
   end
 
   def test_attribute_quoting
-    @template.p(A.new { |a| a.klass 'class"with"quotes' }) { text 'Test' }
+    @template.p(A.new { |a| a.klass 'class"with"quotes' }) { _1.text 'Test' }
     assert_match(/class="class&quot;with&quot;quotes"/, @template.render)
   end
 
@@ -262,21 +253,21 @@ class FunHtmlTemplateTest < Minitest::Test
 
   def test_only_allows_attributes
     assert_raises do
-      @template.p(klass: 'my-class') { text 'Test' }
+      @template.p(klass: 'my-class') { _1.text 'Test' }
       @template.render
     end
   end
 
   def test_attribute_method_aliasing
-    @template.p(A.new { |a| a.klass 'my-class' }) { text 'Test' }
+    @template.p(A.new { |a| a.klass 'my-class' }) { _1.text 'Test' }
     assert_match(/class="my-class"/, @template.render)
   end
 
   def test_html_structure
-    @template.html do
-      body do
-        div(A.new { |a| a.id 'main' }) do
-          p { text 'Nested content' }
+    @template.html do |t|
+      t.body do
+        t.div(A.new { |a| a.id 'main' }) do
+          t.p { t.text 'Nested content' }
         end
       end
     end

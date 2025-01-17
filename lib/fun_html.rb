@@ -63,15 +63,7 @@ module FunHtml
       @__buffer << open << Attribute.to_html(attr)
 
       @__buffer << closing_char
-      if block
-
-        begin
-          yield
-        # it is faster to error and try than to detect the type and branch
-        rescue StandardError
-          instance_eval(&block)
-        end
-      end
+      yield self if block
       @__buffer << close
 
       self
