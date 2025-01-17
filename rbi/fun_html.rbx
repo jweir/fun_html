@@ -3,11 +3,13 @@
 
 module FunHtml
   class Template
-    include FunHtml::Writer
     include FunHtml::NodeDefinitions::HTMLAllElements
   end
 
-  module Writer
+  class Writer
+    sig { void }
+    def initialize; end
+
     sig { params(value: String).returns(T.self_type) }
     def text(value); end
 
