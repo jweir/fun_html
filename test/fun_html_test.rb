@@ -25,16 +25,6 @@ class FunHtmlTest < Minitest::Test
     end
   end
 
-  class Y < FunHtml::Template
-    def call(item)
-      o = item.name
-      div(attr do |a|
-        a.id(o)
-        a.disabled(true)
-      end) { text item.name }
-    end
-  end
-
   class Z < FunHtml::Template
     def initialize
       @value = 'Z'
@@ -242,7 +232,10 @@ class FunHtmlTemplateTest < Minitest::Test
   end
 
   def test_self_closing_tags
-    @template.img(A.new { |a| a.src('image.png') && a.alt('An image') })
+    @template.img(A.new do |a|
+      a.src('image.png')
+      a.alt('An image')
+    end)
     assert_match(%r{<img src="image.png" alt="An image"/>}, @template.render)
   end
 
