@@ -36,10 +36,9 @@ module FunHtml
       write('<script', '</script>', attributes) { send :unsafe_text, body }
     end
 
-    # insert the output of the given template into this template
-    def include(template)
-      @__buffer << template.render
-      self
+    # join an array of other templates into this template.
+    def join(templates)
+      templates.each { @__buffer << _1.render }
     end
 
     def render

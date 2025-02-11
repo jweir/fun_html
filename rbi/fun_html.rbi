@@ -30,8 +30,8 @@ module FunHtml
     sig { params(comment_text: T.nilable(String)).returns(T.self_type) }
     def comment(comment_text = nil); end
 
-    sig { params(template: FunHtml::Template).returns(T.self_type) }
-    def include(template); end
+    sig { params(templates: T::Array[FunHtml::Writer]).void }
+    def join(templates); end
 
     sig { returns(T.self_type) }
     def doctype; end

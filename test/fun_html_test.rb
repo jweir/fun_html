@@ -84,14 +84,13 @@ class FunHtmlTest < Minitest::Test
     assert_equal "<html>Hello,\n\nMy name is Joe.\nBye.\n</html>", template.render
   end
 
-  specify 'a template can be included into another' do
-    b = FunHtml::Template.new.div { _1.text 'B' }
-    a = FunHtml::Template.new.html do |t|
-      t.div { t.text 'A' }
-      t.include(b)
-    end
+  specify 'merge joins an array of templates into a new template' do
+    a = T.start { |t| t.div { t.text 'A' } }
+    b = T.start { |t| t.div { t.text 'B' } }
+    c = T.start { |t| t.div { t.text 'C' } }
+    m = T.start { |t| t.div { t.join([a, b, c]) } }
 
-    assert_equal '<html><div>A</div><div>B</div></html>', a.render
+    assert_equal '<div><div>A</div><div>B</div><div>C</div></div>', m.render
   end
 
   specify 'text is html escaped' do

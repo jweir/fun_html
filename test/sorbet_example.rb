@@ -34,7 +34,7 @@ end
   end
 end
 
-@html_a.include(@html_b)
+@html_a.join([@html_b])
 
 class Template < FunHtml::Template
   extend T::Sig
