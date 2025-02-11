@@ -39,6 +39,7 @@ module FunHtml
     # join an array of other templates into this template.
     def join(templates)
       templates.each { @__buffer << _1.render }
+      self
     end
 
     def render
