@@ -37,10 +37,12 @@ class FunHtmlTest < Minitest::Test
   end
 
   specify 'escaped comments supported' do
-    assert_equal '<p><!--no comment--></p>', FunHtml::Template.new.p { _1.comment 'no comment' }.render
-    assert_equal '<p><!----></p>', FunHtml::Template.new.p { _1.comment }.render, 'empty comment'
-    assert_equal '<p><!--&lt;b&gt;html&lt;/b&gt;--></p>', FunHtml::Template.new.p {
-      _1.comment '<b>html</b>'
+    assert_equal '<p><!--no comment--></p>', FunHtml::Template.start { |x| x.p { x.comment 'no comment' } }.render
+    assert_equal '<p><!----></p>', FunHtml::Template.start { |x| x.p { x.comment } }.render, 'empty comment'
+    assert_equal '<p><!--&lt;b&gt;html&lt;/b&gt;--></p>', FunHtml::Template.start { |x|
+      x.p do
+        x.comment '<b>html</b>'
+      end
     }.render, 'escaped comment'
   end
 
@@ -70,15 +72,17 @@ class FunHtmlTest < Minitest::Test
   end
 
   specify 'handles whitespace correctly' do
-    template = FunHtml::Template.new.html do |t|
-      t.text(
-        <<~TXT
-          Hello,
+    template = FunHtml::Template.start do |t|
+      t.html do
+        t.text(
+          <<~TXT
+            Hello,
 
-          My name is Joe.
-          Bye.
-        TXT
-      )
+            My name is Joe.
+            Bye.
+          TXT
+        )
+      end
     end
 
     assert_equal "<html>Hello,\n\nMy name is Joe.\nBye.\n</html>", template.render
@@ -197,10 +201,12 @@ class FunHtmlTemplateTest < Minitest::Test
   end
 
   def test_void_elements
-    r = FunHtml::Template.new.html do |t|
-      t.br
-      t.hr
-      t.img(A.new { |a| a.href '/image' })
+    r = FunHtml::Template.start do |t|
+      t.html do
+        t.br
+        t.hr
+        t.img(A.new { |a| a.href '/image' })
+      end
     end
 
     assert_equal '<html><br/><hr/><img href="/image"/></html>', r.render
