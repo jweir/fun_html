@@ -1,0 +1,46 @@
+gem:
+  # Add your `gem` command parameters here:
+  #
+  exclude:
+    - ast
+    - benchmark-ips
+    - date
+    - erubi
+    - io-console
+    - json
+    - language_server-protocol
+    - netrc
+    - parallel
+    - pp
+    - prettyprint
+    - prism
+    - psych
+    - racc
+    - rainbow
+    - rake
+    - rbi
+    - rdoc
+    - regexp_parser
+    - reline
+    - rexml
+    - rubocop-ast
+    - rubocop
+    - ruby-progressbar
+    - spoom
+    - stringio
+    - strscan
+    - tapioca
+    - thor
+    - unicode-display_width
+    - yard-sorbet
+    - yard
+    - parser
+
+  # doc: true
+  # workers: 5
+dsl:
+  # Add your `dsl` command parameters here:
+  #
+  # exclude:
+  # - SomeGeneratorName
+  # workers: 5
