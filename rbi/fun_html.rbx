@@ -23,7 +23,7 @@ module FunHtml
     def unsafe_text(value); end
 
     sig do
-      params(blk: T.proc.params(arg0: FunHtml::Attribute).void).returns(FunHtml::Attribute)
+      params(blk: T.nilable(T.proc.params(arg0: FunHtml::Attribute).void)).returns(FunHtml::Attribute)
     end
     def attr(&blk); end
 

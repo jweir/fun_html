@@ -64,6 +64,14 @@ class FunHtmlTest < Minitest::Test
       X.new.call(Item.new('ITEM')).render
   end
 
+  specify 'supports chainable attributes' do
+    r = T.start do |t|
+      t.div(t.attr.id('one').klass('k'))
+    end
+
+    assert_equal '<div id="one" class="k"></div>', r.render
+  end
+
   specify 'does not double render' do
     t = Z.new
     t.call.render

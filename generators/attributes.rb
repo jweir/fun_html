@@ -167,29 +167,29 @@ module Generators
         name = clean_name(attr_name)
 
         if name == 'data'
-          ['sig { params(suffix: String, value: String).void }',
+          ['sig { params(suffix: String, value: String).returns(FunHtml::Attribute) }',
            "def #{name}(suffix, value);end"].join("\n")
         else
           method =
             case meta[:type]
             in :boolean
-              ['sig { params(value: T::Boolean).void }',
+              ['sig { params(value: T::Boolean).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             in :boolean_or_string
-              ['sig { params(value: T.any(String, T::Boolean)).void }',
+              ['sig { params(value: T.any(String, T::Boolean)).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             in :number
-              ['sig { params(value: Numeric).void }',
+              ['sig { params(value: Numeric).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             in :number_or_datetime | :number_or_string
-              ['sig { params(value: T.any(Numeric, String)).void }',
+              ['sig { params(value: T.any(Numeric, String)).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             in :color |
               :datetime |
               :enum |
               :string |
               :url
-              ['sig { params(value: String).void }',
+              ['sig { params(value: String).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             else
               raise meta[:type].to_s

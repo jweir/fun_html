@@ -18,8 +18,12 @@ module FunHtml
       self
     end
 
-    def attr(&blk) # rubocop:disable Style/ArgumentsForwarding
-      Attribute.new(&blk) # rubocop:disable Style/ArgumentsForwarding
+    def attr(&blk)
+      if blk
+        Attribute.new(&blk)
+      else
+        Attribute.new
+      end
     end
 
     def comment(comment_text = nil)
