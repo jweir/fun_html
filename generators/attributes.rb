@@ -111,6 +111,75 @@ module Generators
       'wrap' => { desc: 'How text wraps in textarea', values: %w[hard soft], type: :enum }
     }.freeze
 
+    # https://html.spec.whatwg.org/multipage/webappapis.html#handler-onchange
+    EVENT_ATTRIBUTES = {
+      'onabort' => { desc: '', values: nil, type: :string },
+      'onauxclick' => { desc: '', values: nil, type: :string },
+      'onbeforeinput' => { desc: '', values: nil, type: :string },
+      'onbeforematch' => { desc: '', values: nil, type: :string },
+      'onbeforetoggle' => { desc: '', values: nil, type: :string },
+      'oncancel' => { desc: '', values: nil, type: :string },
+      'oncanplay' => { desc: '', values: nil, type: :string },
+      'oncanplaythrough' => { desc: '', values: nil, type: :string },
+      'onchange' => { desc: '', values: nil, type: :string },
+      'onclick' => { desc: '', values: nil, type: :string },
+      'onclose' => { desc: '', values: nil, type: :string },
+      'oncontextlost' => { desc: '', values: nil, type: :string },
+      'oncontextmenu' => { desc: '', values: nil, type: :string },
+      'oncontextrestored' => { desc: '', values: nil, type: :string },
+      'oncopy' => { desc: '', values: nil, type: :string },
+      'oncuechange' => { desc: '', values: nil, type: :string },
+      'oncut' => { desc: '', values: nil, type: :string },
+      'ondblclick' => { desc: '', values: nil, type: :string },
+      'ondrag' => { desc: '', values: nil, type: :string },
+      'ondragend' => { desc: '', values: nil, type: :string },
+      'ondragenter' => { desc: '', values: nil, type: :string },
+      'ondragleave' => { desc: '', values: nil, type: :string },
+      'ondragover' => { desc: '', values: nil, type: :string },
+      'ondragstart' => { desc: '', values: nil, type: :string },
+      'ondrop' => { desc: '', values: nil, type: :string },
+      'ondurationchange' => { desc: '', values: nil, type: :string },
+      'onemptied' => { desc: '', values: nil, type: :string },
+      'onended' => { desc: '', values: nil, type: :string },
+      'onformdata' => { desc: '', values: nil, type: :string },
+      'oninput' => { desc: '', values: nil, type: :string },
+      'oninvalid' => { desc: '', values: nil, type: :string },
+      'onkeydown' => { desc: '', values: nil, type: :string },
+      'onkeypress' => { desc: '', values: nil, type: :string },
+      'onkeyup' => { desc: '', values: nil, type: :string },
+      'onloadeddata' => { desc: '', values: nil, type: :string },
+      'onloadedmetadata' => { desc: '', values: nil, type: :string },
+      'onloadstart' => { desc: '', values: nil, type: :string },
+      'onmousedown' => { desc: '', values: nil, type: :string },
+      'onmouseenter' => { desc: '', values: nil, type: :string },
+      'onmouseleave' => { desc: '', values: nil, type: :string },
+      'onmousemove' => { desc: '', values: nil, type: :string },
+      'onmouseout' => { desc: '', values: nil, type: :string },
+      'onmouseover' => { desc: '', values: nil, type: :string },
+      'onmouseup' => { desc: '', values: nil, type: :string },
+      'onpaste' => { desc: '', values: nil, type: :string },
+      'onpause' => { desc: '', values: nil, type: :string },
+      'onplay' => { desc: '', values: nil, type: :string },
+      'onplaying' => { desc: '', values: nil, type: :string },
+      'onprogress' => { desc: '', values: nil, type: :string },
+      'onratechange' => { desc: '', values: nil, type: :string },
+      'onreset' => { desc: '', values: nil, type: :string },
+      'onscrollend' => { desc: '', values: nil, type: :string },
+      'onsecuritypolicyviolation' => { desc: '', values: nil, type: :string },
+      'onseeked' => { desc: '', values: nil, type: :string },
+      'onseeking' => { desc: '', values: nil, type: :string },
+      'onselect' => { desc: '', values: nil, type: :string },
+      'onslotchange' => { desc: '', values: nil, type: :string },
+      'onstalled' => { desc: '', values: nil, type: :string },
+      'onsubmit' => { desc: '', values: nil, type: :string },
+      'onsuspend' => { desc: '', values: nil, type: :string },
+      'ontimeupdate' => { desc: '', values: nil, type: :string },
+      'ontoggle' => { desc: '', values: nil, type: :string },
+      'onvolumechange' => { desc: '', values: nil, type: :string },
+      'onwaiting' => { desc: '', values: nil, type: :string },
+      'onwheel' => { desc: '', values: nil, type: :string }
+    }.freeze
+
     def self.call
       File.write 'lib/fun_html/attribute_definitions.rb', template(generate.join("\n"))
       File.write 'rbi/attributes.rbx', template(rbi_sigs.join("\n"))
@@ -128,7 +197,7 @@ module Generators
     end
 
     def self.generate
-      ATTRIBUTES.map do |attr_name, meta|
+      ATTRIBUTES.merge(EVENT_ATTRIBUTES).map do |attr_name, meta|
         name = clean_name(attr_name)
         doc = "# #{meta[:desc]}\n"
 
