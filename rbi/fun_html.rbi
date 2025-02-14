@@ -9,6 +9,9 @@ module FunHtml
     sig { params(block: T.proc.params(arg0: T.attached_class).void).returns(T.attached_class) }
     def self.start(&block); end
 
+    sig { params(templates: T::Array[FunHtml::Writer]).returns(T.self_type) }
+    def join(templates); end
+
     sig do
       params(blk: T.nilable(T.proc.params(arg0: FunHtml::Attribute).void)).returns(FunHtml::Attribute)
     end
@@ -38,9 +41,6 @@ module FunHtml
 
     sig { params(value: String).returns(T.self_type) }
     def unsafe_text(value); end
-
-    sig { params(templates: T::Array[FunHtml::Writer]).returns(T.self_type) }
-    def join(templates); end
 
     sig { returns(String) }
     def render; end

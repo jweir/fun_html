@@ -8,8 +8,34 @@ module FunHtml
   # FunHtml Template will generate typed HTML. Each tag and attribute has a
   # match method that is typed via Sorbet (which is optional).
   #
+  # The template is designed to allow subclassing or using `start` to generate
+  # templates without subclassing.
   #
-  # If you need to create custom tags, create a method that integrates with the Writer#write method.
+  # When subclassing understand that `new` generatings a "buffer". Each time a
+  # tag(div, b, body, etc) is called it will be added to the buffer. Once
+  # `render` is called the buffer is is returned and then cleared.
+  #
+  #     class Example < FunHtml::Template
+  #       def initialize(name)
+  #         super()
+  #         @name = name
+  #       end
+  #
+  #       def view
+  #         doctype
+  #         html do
+  #           body do
+  #             h1 { text @name }
+  #           end
+  #         end
+  #       end
+  #     end
+  #
+  #     puts Example.new('My Example').view.render
+  #     <!DOCTYPE html><html><body><h1>My Example</h1></body></html>
+  #
+  # If you need to create custom tags, create a method that integrates with the
+  # Writer#write method.
   class Template
     include FunHtml::Writer
     include FunHtml::SpecElements::HTMLAllElements
@@ -27,6 +53,12 @@ module FunHtml
       obj = new
       yield obj if block
       obj
+    end
+
+    # join an array of other templates into this template.
+    def join(templates)
+      templates.each { @__buffer << _1.render }
+      self
     end
 
     # text will generate the text node, this is the only way to insert strings into the template.

@@ -13,12 +13,6 @@ module FunHtml
       @__buffer = +''
     end
 
-    # join an array of other templates into this template.
-    def join(templates)
-      templates.each { @__buffer << _1.render }
-      self
-    end
-
     # Render produces the HTML string and clears the buffer.
     def render
       @__buffer
