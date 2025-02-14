@@ -9,5 +9,4 @@ bin
 /spec/reports/
 /tmp/
 /.vim/
-/sorbet/
 *.gem

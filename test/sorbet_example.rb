@@ -11,17 +11,30 @@ FunHtml::Attribute.new do |b|
   b.klass('a "b" c')
 end
 
-@template = FunHtml::Template.new
-
-@template.html do
-  head do
-    title { text 'My Page Title' }
-  end
-  body do
-    h1 { text 'Heading' }
-    p { text 'This is a paragraph.' }
+class Z < FunHtml::Template
+  def my_path
+    'asdf'
   end
 end
+
+@html_a = Z.start do |t|
+  t.head do
+    t.title { t.text 'My Page Title' }
+    t.title { t.text t.my_path }
+  end
+  t.body do
+    t.h1 { t.text 'Heading' }
+    t.p { t.text 'This is a paragraph.' }
+  end
+end
+
+@html_b = Z.start do |t|
+  t.div do
+    t.text 'inserted'
+  end
+end
+
+@html_a.join([@html_b])
 
 class Template < FunHtml::Template
   extend T::Sig
@@ -31,7 +44,7 @@ class Template < FunHtml::Template
     doctype
   end
 
-  sig { params(items: T::Array[Item]).returns(Template) }
+  sig { params(items: T::Array[Item]).returns(FunHtml::Template) }
   def call(items)
     FunHtml::Attribute.new do |a|
       a.lang('en')

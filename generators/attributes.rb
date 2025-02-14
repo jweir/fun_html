@@ -22,14 +22,16 @@ module Generators
       'border' => { desc: 'Border width in pixels', values: nil, type: :number },
       'charset' => { desc: 'Character encoding of document', values: nil, type: :string },
       'checked' => { desc: 'Whether checkbox/radio button is selected', values: nil, type: :boolean },
-      'class' => { desc: 'CSS class name(s) for styling', values: nil, type: :string },
+      # class is a custom method
+      # 'class' => { desc: 'CSS class name(s) for styling', values: nil, type: :string },
       'cols' => { desc: 'Number of columns in textarea', values: nil, type: :number },
       'colspan' => { desc: 'Number of columns a cell spans', values: nil, type: :number },
       'content' => { desc: 'Content for meta tags', values: nil, type: :string },
       'contenteditable' => { desc: 'Whether content is editable', values: %w[true false], type: :enum },
       'controls' => { desc: 'Show media playback controls', values: nil, type: :boolean },
       'coords' => { desc: 'Coordinates for image maps', values: nil, type: :string },
-      'data' => { desc: 'Custom data attributes', values: nil, type: :string },
+      # data is a custom method
+      # 'data' => { desc: 'Custom data attributes', values: nil, type: :string },
       'datetime' => { desc: 'Date/time of element content', values: nil, type: :datetime },
       'default' => { desc: 'Default track for media', values: nil, type: :boolean },
       'defer' => { desc: 'Script should execute after parsing', values: nil, type: :boolean },
@@ -111,8 +113,77 @@ module Generators
       'wrap' => { desc: 'How text wraps in textarea', values: %w[hard soft], type: :enum }
     }.freeze
 
+    # https://html.spec.whatwg.org/multipage/webappapis.html#handler-onchange
+    EVENT_ATTRIBUTES = {
+      'onabort' => { desc: '', values: nil, type: :string },
+      'onauxclick' => { desc: '', values: nil, type: :string },
+      'onbeforeinput' => { desc: '', values: nil, type: :string },
+      'onbeforematch' => { desc: '', values: nil, type: :string },
+      'onbeforetoggle' => { desc: '', values: nil, type: :string },
+      'oncancel' => { desc: '', values: nil, type: :string },
+      'oncanplay' => { desc: '', values: nil, type: :string },
+      'oncanplaythrough' => { desc: '', values: nil, type: :string },
+      'onchange' => { desc: '', values: nil, type: :string },
+      'onclick' => { desc: '', values: nil, type: :string },
+      'onclose' => { desc: '', values: nil, type: :string },
+      'oncontextlost' => { desc: '', values: nil, type: :string },
+      'oncontextmenu' => { desc: '', values: nil, type: :string },
+      'oncontextrestored' => { desc: '', values: nil, type: :string },
+      'oncopy' => { desc: '', values: nil, type: :string },
+      'oncuechange' => { desc: '', values: nil, type: :string },
+      'oncut' => { desc: '', values: nil, type: :string },
+      'ondblclick' => { desc: '', values: nil, type: :string },
+      'ondrag' => { desc: '', values: nil, type: :string },
+      'ondragend' => { desc: '', values: nil, type: :string },
+      'ondragenter' => { desc: '', values: nil, type: :string },
+      'ondragleave' => { desc: '', values: nil, type: :string },
+      'ondragover' => { desc: '', values: nil, type: :string },
+      'ondragstart' => { desc: '', values: nil, type: :string },
+      'ondrop' => { desc: '', values: nil, type: :string },
+      'ondurationchange' => { desc: '', values: nil, type: :string },
+      'onemptied' => { desc: '', values: nil, type: :string },
+      'onended' => { desc: '', values: nil, type: :string },
+      'onformdata' => { desc: '', values: nil, type: :string },
+      'oninput' => { desc: '', values: nil, type: :string },
+      'oninvalid' => { desc: '', values: nil, type: :string },
+      'onkeydown' => { desc: '', values: nil, type: :string },
+      'onkeypress' => { desc: '', values: nil, type: :string },
+      'onkeyup' => { desc: '', values: nil, type: :string },
+      'onloadeddata' => { desc: '', values: nil, type: :string },
+      'onloadedmetadata' => { desc: '', values: nil, type: :string },
+      'onloadstart' => { desc: '', values: nil, type: :string },
+      'onmousedown' => { desc: '', values: nil, type: :string },
+      'onmouseenter' => { desc: '', values: nil, type: :string },
+      'onmouseleave' => { desc: '', values: nil, type: :string },
+      'onmousemove' => { desc: '', values: nil, type: :string },
+      'onmouseout' => { desc: '', values: nil, type: :string },
+      'onmouseover' => { desc: '', values: nil, type: :string },
+      'onmouseup' => { desc: '', values: nil, type: :string },
+      'onpaste' => { desc: '', values: nil, type: :string },
+      'onpause' => { desc: '', values: nil, type: :string },
+      'onplay' => { desc: '', values: nil, type: :string },
+      'onplaying' => { desc: '', values: nil, type: :string },
+      'onprogress' => { desc: '', values: nil, type: :string },
+      'onratechange' => { desc: '', values: nil, type: :string },
+      'onreset' => { desc: '', values: nil, type: :string },
+      'onscrollend' => { desc: '', values: nil, type: :string },
+      'onsecuritypolicyviolation' => { desc: '', values: nil, type: :string },
+      'onseeked' => { desc: '', values: nil, type: :string },
+      'onseeking' => { desc: '', values: nil, type: :string },
+      'onselect' => { desc: '', values: nil, type: :string },
+      'onslotchange' => { desc: '', values: nil, type: :string },
+      'onstalled' => { desc: '', values: nil, type: :string },
+      'onsubmit' => { desc: '', values: nil, type: :string },
+      'onsuspend' => { desc: '', values: nil, type: :string },
+      'ontimeupdate' => { desc: '', values: nil, type: :string },
+      'ontoggle' => { desc: '', values: nil, type: :string },
+      'onvolumechange' => { desc: '', values: nil, type: :string },
+      'onwaiting' => { desc: '', values: nil, type: :string },
+      'onwheel' => { desc: '', values: nil, type: :string }
+    }.freeze
+
     def self.call
-      File.write 'lib/fun_html/attribute_definitions.rb', template(generate.join("\n"))
+      File.write 'lib/fun_html/spec_attributes.rb', template(generate.join("\n"))
       File.write 'rbi/attributes.rbx', template(rbi_sigs.join("\n"))
     end
 
@@ -120,7 +191,7 @@ module Generators
       <<~SRC
         module FunHtml
           # HTML attributes autogenerated, do not edit
-          module AttributeDefinitions
+          module SpecAttributes
             #{body}
           end
         end
@@ -128,7 +199,7 @@ module Generators
     end
 
     def self.generate
-      ATTRIBUTES.map do |attr_name, meta|
+      ATTRIBUTES.merge(EVENT_ATTRIBUTES).map do |attr_name, meta|
         name = clean_name(attr_name)
         doc = "# #{meta[:desc]}\n"
 
@@ -143,7 +214,7 @@ module Generators
           doc +
             case meta[:type]
             in :boolean
-              "def #{name}(value) = write_empty(' #{attr_name}', value)"
+              "def #{name}(value) = write_boolean(' #{attr_name}', value)"
             in
               :boolean_or_string |
                 :color |
@@ -167,29 +238,29 @@ module Generators
         name = clean_name(attr_name)
 
         if name == 'data'
-          ['sig { params(suffix: String, value: String).void }',
+          ['sig { params(suffix: String, value: String).returns(FunHtml::Attribute) }',
            "def #{name}(suffix, value);end"].join("\n")
         else
           method =
             case meta[:type]
             in :boolean
-              ['sig { params(value: T::Boolean).void }',
+              ['sig { params(value: T::Boolean).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             in :boolean_or_string
-              ['sig { params(value: T.any(String, T::Boolean)).void }',
+              ['sig { params(value: T.any(String, T::Boolean)).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             in :number
-              ['sig { params(value: Numeric).void }',
+              ['sig { params(value: Numeric).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             in :number_or_datetime | :number_or_string
-              ['sig { params(value: T.any(Numeric, String)).void }',
+              ['sig { params(value: T.any(Numeric, String)).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             in :color |
               :datetime |
               :enum |
               :string |
               :url
-              ['sig { params(value: String).void }',
+              ['sig { params(value: String).returns(FunHtml::Attribute) }',
                "def #{name}(value);end"]
             else
               raise meta[:type].to_s
