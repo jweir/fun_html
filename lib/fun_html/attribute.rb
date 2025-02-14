@@ -1,13 +1,13 @@
 # typed: strict
 # frozen_string_literal: true
 
-require_relative 'attribute_definitions'
+require_relative 'spec_attributes'
 require 'erb/escape'
 
 module FunHtml
   # Create html attributes.
   class Attribute
-    include FunHtml::AttributeDefinitions
+    include FunHtml::SpecAttributes
 
     # only allow nil or objects that respond to `safe_attribute`
     def self.to_html(attr)

@@ -1,7 +1,7 @@
 # typed: strict
 # frozen_string_literal: true
 
-require_relative 'node_definitions'
+require_relative 'spec_elements'
 require 'erb/escape'
 
 module FunHtml
@@ -11,33 +11,6 @@ module FunHtml
 
     def initialize
       @__buffer = +''
-    end
-
-    def text(value)
-      @__buffer << ERB::Escape.html_escape(value)
-      self
-    end
-
-    def attr(&blk)
-      if blk
-        Attribute.new(&blk)
-      else
-        Attribute.new
-      end
-    end
-
-    def comment(comment_text = nil)
-      write('<!--', '-->', nil, closing_char: '') { text comment_text.to_s }
-    end
-
-    def doctype
-      @__buffer << '<!DOCTYPE html>'
-      self
-    end
-
-    def script(attributes = nil, &block) # rubocop:disable Lint/UnusedMethodArgument
-      body = yield
-      write('<script', '</script>', attributes) { send :unsafe_text, body }
     end
 
     # join an array of other templates into this template.
