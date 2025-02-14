@@ -19,4 +19,3 @@ generate:
 build:
 	rm *.gem
 	gem build
-	cp *.gem ../../pharos-ei/ams

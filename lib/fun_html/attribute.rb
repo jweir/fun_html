@@ -65,6 +65,7 @@ module FunHtml
       self.class.new(@__buffer.merge(other.instance_variable_get(:@__buffer)))
     end
 
+    # output the attributes as string
     def safe_attribute
       @__buffer.values.join
     end
