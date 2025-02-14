@@ -5,7 +5,7 @@ require_relative 'spec_elements'
 require 'erb/escape'
 
 module FunHtml
-  # nodoc
+  # Writer collects the rendered elements and attributes into a string.
   module Writer
     include Kernel
 
@@ -19,6 +19,7 @@ module FunHtml
       self
     end
 
+    # Render produces the HTML string and clears the buffer.
     def render
       @__buffer
     ensure
@@ -28,6 +29,7 @@ module FunHtml
 
     private
 
+    # used when the text should not be escaped, see `script`
     def unsafe_text(value)
       @__buffer << value
       self
