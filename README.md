@@ -63,6 +63,14 @@ The you can `render` the object:
 render MySubClassOfRailsView.new(my_data)
 ```
 
+## Escape Hatch
+
+This is Ruby so you can do whatever you want in the runtime and there is no saftey.
+
+So if you want to bring in things like Rails helpers, or other libraries, you
+can always write directly to the template's buffer or replace the render method
+on a subclassed template. Its all just a string at the core.
+
 ## TODO
 * Is having one large string ideal? There is no line breaking of any type.
 * Support SVG
