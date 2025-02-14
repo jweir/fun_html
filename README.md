@@ -66,3 +66,7 @@ render MySubClassOfRailsView.new(my_data)
 ## TODO
 * Is having one large string ideal? There is no line breaking of any type.
 * Support SVG
+
+## Node?
+
+The node related code is present to generate the HTML element specs.
