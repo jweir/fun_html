@@ -31,8 +31,6 @@ module FunHtml
     def charset(value); end
     sig { params(value: T::Boolean).returns(FunHtml::Attribute) }
     def checked(value); end
-    sig { params(value: String).returns(FunHtml::Attribute) }
-    def klass(value); end
     sig { params(value: Numeric).returns(FunHtml::Attribute) }
     def cols(value); end
     sig { params(value: Numeric).returns(FunHtml::Attribute) }
@@ -45,8 +43,6 @@ module FunHtml
     def controls(value); end
     sig { params(value: String).returns(FunHtml::Attribute) }
     def coords(value); end
-    sig { params(suffix: String, value: String).returns(FunHtml::Attribute) }
-    def data(suffix, value); end
     sig { params(value: String).returns(FunHtml::Attribute) }
     def datetime(value); end
     sig { params(value: T::Boolean).returns(FunHtml::Attribute) }

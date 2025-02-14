@@ -25,6 +25,10 @@ module FunHtml
       end
     end
 
+    specify 'the klass attibutes produces the class' do
+      assert_equal(' class="big red"', FunHtml::Attribute.new { |a| a.klass('big red') }.safe_attribute)
+    end
+
     specify 'attributes are supported' do
       a = FunHtml::Attribute.new do |at|
         at.klass('ok')
@@ -51,9 +55,9 @@ module FunHtml
       assert_equal ' id="three" name="ok"', c.safe_attribute
     end
 
-    specify 'support valueless attributes' do
-      a = FunHtml::Attribute.new { _1.disabled(true) }
-      b = a.merge(FunHtml::Attribute.new { _1.disabled(false) })
+    specify 'support boolean attributes' do
+      a = FunHtml::Attribute.new.disabled(true)
+      b = a.merge(FunHtml::Attribute.new.disabled(false))
       assert_equal ' disabled', a.safe_attribute
       assert_equal '', b.safe_attribute
     end

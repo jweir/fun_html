@@ -67,6 +67,12 @@ module FunHtml
       @__buffer = buffer
     end
 
+    sig { params(suffix: String, value: String).returns(FunHtml::Attribute) }
+    def data(suffix, value); end
+
+    sig { params(value: String).returns(FunHtml::Attribute) }
+    def klass(value); end
+
     sig { params(attr: T.nilable(FunHtml::Attribute)).returns(String) }
     def self.to_html(attr); end
 
@@ -80,7 +86,7 @@ module FunHtml
     def write(name, value); end
 
     sig { params(name: String, print: T::Boolean).returns(FunHtml::Attribute) }
-    def write_empty(name, print); end
+    def write_boolean(name, print); end
 
     include FunHtml::SpecAttributes
   end
@@ -1181,8 +1187,6 @@ module FunHtml
     def charset(value); end
     sig { params(value: T::Boolean).returns(FunHtml::Attribute) }
     def checked(value); end
-    sig { params(value: String).returns(FunHtml::Attribute) }
-    def klass(value); end
     sig { params(value: Numeric).returns(FunHtml::Attribute) }
     def cols(value); end
     sig { params(value: Numeric).returns(FunHtml::Attribute) }
@@ -1195,8 +1199,6 @@ module FunHtml
     def controls(value); end
     sig { params(value: String).returns(FunHtml::Attribute) }
     def coords(value); end
-    sig { params(suffix: String, value: String).returns(FunHtml::Attribute) }
-    def data(suffix, value); end
     sig { params(value: String).returns(FunHtml::Attribute) }
     def datetime(value); end
     sig { params(value: T::Boolean).returns(FunHtml::Attribute) }

@@ -22,14 +22,16 @@ module Generators
       'border' => { desc: 'Border width in pixels', values: nil, type: :number },
       'charset' => { desc: 'Character encoding of document', values: nil, type: :string },
       'checked' => { desc: 'Whether checkbox/radio button is selected', values: nil, type: :boolean },
-      'class' => { desc: 'CSS class name(s) for styling', values: nil, type: :string },
+      # class is a custom method
+      # 'class' => { desc: 'CSS class name(s) for styling', values: nil, type: :string },
       'cols' => { desc: 'Number of columns in textarea', values: nil, type: :number },
       'colspan' => { desc: 'Number of columns a cell spans', values: nil, type: :number },
       'content' => { desc: 'Content for meta tags', values: nil, type: :string },
       'contenteditable' => { desc: 'Whether content is editable', values: %w[true false], type: :enum },
       'controls' => { desc: 'Show media playback controls', values: nil, type: :boolean },
       'coords' => { desc: 'Coordinates for image maps', values: nil, type: :string },
-      'data' => { desc: 'Custom data attributes', values: nil, type: :string },
+      # data is a custom method
+      # 'data' => { desc: 'Custom data attributes', values: nil, type: :string },
       'datetime' => { desc: 'Date/time of element content', values: nil, type: :datetime },
       'default' => { desc: 'Default track for media', values: nil, type: :boolean },
       'defer' => { desc: 'Script should execute after parsing', values: nil, type: :boolean },
@@ -212,7 +214,7 @@ module Generators
           doc +
             case meta[:type]
             in :boolean
-              "def #{name}(value) = write_empty(' #{attr_name}', value)"
+              "def #{name}(value) = write_boolean(' #{attr_name}', value)"
             in
               :boolean_or_string |
                 :color |
