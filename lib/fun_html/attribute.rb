@@ -60,6 +60,16 @@ module FunHtml
       write(' class="', value)
     end
 
+    # classes takes a hash of class names and boolean values
+    # only the names with a true value will be printed
+    # classes({'a' => true, 'b' => false, 'c' => true}) -> ' class="a c"'
+    def classes(list)
+      klass list.select { |_k, v| v == true }.keys.join(' ')
+    end
+
+    # alias so klass has classes
+    def klasses(list) = classes(list)
+
     # Merge another Attribute to create a new, combined, Attribute.
     def merge(other)
       self.class.new(@__buffer.merge(other.instance_variable_get(:@__buffer)))

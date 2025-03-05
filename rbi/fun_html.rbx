@@ -76,6 +76,12 @@ module FunHtml
     sig { params(attr: T.nilable(FunHtml::Attribute)).returns(String) }
     def self.to_html(attr); end
 
+    sig { params(list: T::Hash[String, T::Boolean]).returns(FunHtml::Attribute) }
+    def classes(list); end
+
+    sig { params(list: T::Hash[String, T::Boolean]).returns(FunHtml::Attribute) }
+    def klasses(list); end
+
     sig { params(other: FunHtml::Attribute).returns(FunHtml::Attribute) }
     def merge(other); end
 

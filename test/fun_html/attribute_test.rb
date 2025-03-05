@@ -61,5 +61,10 @@ module FunHtml
       assert_equal ' disabled', a.safe_attribute
       assert_equal '', b.safe_attribute
     end
+
+    specify 'classes includes the classes with a true value' do
+      assert_equal ' class="foo zoo"',
+                   FunHtml::Attribute.new.classes({ 'foo' => true, 'bar' => false, 'zoo' => true }).safe_attribute
+    end
   end
 end
