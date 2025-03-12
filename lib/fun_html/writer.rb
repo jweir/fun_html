@@ -10,15 +10,15 @@ module FunHtml
     include Kernel
 
     def initialize
-      @__buffer = +''
+      @__buffer = String.new(capacity: 1024)
     end
 
     # Render produces the HTML string and clears the buffer.
     def render
-      @__buffer
-    ensure
+      result = @__buffer
       # empty the buffer to prevent double rendering
-      @__buffer = +''
+      @__buffer = String.new(capacity: 1024)
+      result
     end
 
     private
@@ -33,9 +33,12 @@ module FunHtml
     CLOSE_VOID = '/>'
 
     def write(open, close, attr = nil, closing_char: CLOSE, &block)
-      @__buffer << open << Attribute.to_html(attr)
+      if attr
+        @__buffer << open << Attribute.to_html(attr) << closing_char
+      else
+        @__buffer << open << closing_char
+      end
 
-      @__buffer << closing_char
       yield self if block
       @__buffer << close
 

@@ -32,7 +32,9 @@ module FunHtml
 
     # only allow nil or objects that respond to `safe_attribute`
     def self.to_html(attr)
-      attr&.safe_attribute.to_s
+      return '' if attr.nil?
+
+      attr.safe_attribute
     end
 
     # create a new Attribute object to create reuseable attributes
