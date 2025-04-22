@@ -1,3 +1,6 @@
+## 0.3.1
+Error when `join` with a template of self.
+
 ## 0.3.0
 
 Added the `classes` on Attribute for adding in class names.

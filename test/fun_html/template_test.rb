@@ -82,13 +82,23 @@ module FunHtml
       assert_equal "<html>Hello,\n\nMy name is Joe.\nBye.\n</html>", template.render
     end
 
-    specify 'merge joins an array of templates into a new template' do
+    specify 'join combines an array of templates into a parent template' do
       a = T.start { |t| t.div { t.text 'A' } }
       b = T.start { |t| t.div { t.text 'B' } }
       c = T.start { |t| t.div { t.text 'C' } }
       m = T.start { |t| t.div { t.join([a, b, c]) } }
 
       assert_equal '<div><div>A</div><div>B</div><div>C</div></div>', m.render
+    end
+
+    specify 'join errors if a joined template is itself' do
+      assert_raises do
+        T.start { |t| t.join [t.text('A')] }
+      end
+
+      FunHtml::Template.start do |t|
+        t.join [FunHtml::Template.start { |x| x.text('hello') }]
+      end
     end
 
     specify 'text is html escaped' do

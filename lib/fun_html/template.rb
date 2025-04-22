@@ -55,9 +55,26 @@ module FunHtml
       obj
     end
 
+    JOIN_ERROR = <<~TXT.freeze
+      You can not join templates which are created by the parent template.
+
+      This will fail:
+
+        FunHtml::Template.start { |t| t.join [t.text("hello")] }
+
+      Instead only join new templates
+        FunHtml::Template.start do |t|
+          t.join [FunHtml::Template.start { |x| x.text('hello') }]
+        end
+    TXT
+
     # join an array of other templates into this template.
     def join(templates)
-      templates.each { @__buffer << _1.render }
+      templates.each do |t|
+        raise JOIN_ERROR if t == self
+
+        @__buffer << t.render
+      end
       self
     end
 

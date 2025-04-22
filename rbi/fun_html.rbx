@@ -3,6 +3,8 @@
 
 module FunHtml
   class Template
+    JOIN_ERROR = T.let(T.unsafe(nil), String)
+
     include FunHtml::Writer
     include FunHtml::SpecElements::HTMLAllElements
 
