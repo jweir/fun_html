@@ -72,6 +72,9 @@ module FunHtml
     sig { params(suffix: String, value: String).returns(FunHtml::Attribute) }
     def data(suffix, value); end
 
+    sig { params(name: String, value: String).returns(FunHtml::Attribute) }
+    def attribute(name, value); end
+
     sig { params(value: String).returns(FunHtml::Attribute) }
     def klass(value); end
 

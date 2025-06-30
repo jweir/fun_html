@@ -74,6 +74,7 @@ on a subclassed template. Its all just a string at the core.
 ## TODO
 * Is having one large string ideal? There is no line breaking of any type.
 * Support SVG
+* Check the `data` and `attribute` properties for possible injection
 
 ## Node?
 

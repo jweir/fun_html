@@ -44,6 +44,12 @@ module FunHtml
       assert_equal 'class="ok" id="1" name="foo"', c.safe_attribute.strip
     end
 
+    specify 'attribute allows custom attributes on the node' do
+      # the last attribute of that name will define the value
+      a = FunHtml::Attribute.new { _1.attribute('foo', 'zoo').attribute('foo', 'bar').attribute('x', 'y') }
+      assert_equal 'foo="bar" x="y"', a.safe_attribute.strip
+    end
+
     specify 'attributes do not allow attributes to defined more than once' do
       a = FunHtml::Attribute.new do |at|
         at.id('one')

@@ -57,6 +57,10 @@ module FunHtml
       write(" data-#{suffix}=\"", value)
     end
 
+    def attribute(name, value)
+      write(" #{name}=\"", value)
+    end
+
     # CSS class name(s) for styling, the name changed to protect the Ruby.
     def klass(value)
       write(' class="', value)
