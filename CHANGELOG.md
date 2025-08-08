@@ -1,3 +1,6 @@
+## 0.3.3
+Simplfied typing for elements
+
 ## 0.3.2
 Allow for custom attributes
 
