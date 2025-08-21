@@ -49,6 +49,9 @@ module FunHtml
 
     private
 
+    sig { returns(String) }
+    def new_string; end
+
     sig do
       params(open: String, close: String, attr: T.nilable(FunHtml::Attribute), closing_char: String,
              block: T.nilable(T.proc.params(arg0: FunHtml::Writer).void)).returns(T.self_type)

@@ -10,18 +10,20 @@ module FunHtml
     include Kernel
 
     def initialize
-      @__buffer = String.new(capacity: 1024)
+      @__buffer = new_string
     end
 
     # Render produces the HTML string and clears the buffer.
     def render
       result = @__buffer
       # empty the buffer to prevent double rendering
-      @__buffer = String.new(capacity: 1024)
+      @__buffer = new_string
       result
     end
 
     private
+
+    def new_string = String.new(capacity: 1024)
 
     # used when the text should not be escaped, see `script`
     def unsafe_text(value)
